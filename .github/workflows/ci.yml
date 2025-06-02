@@ -86,11 +86,7 @@ jobs:
         run: bin/rails db:test:prepare
         env:
           RAILS_ENV: test
-          DB_HOST: 127.0.0.1
-          DB_USERNAME: user
-          DB_PASSWORD: password
-          DB_NAME: sample_db_test
-          DB_PORT: 3306
+          DATABASE_URL: mysql2://user:password@127.0.0.1:3306/sample_db_test
 
       - name: Run tests
         env:
