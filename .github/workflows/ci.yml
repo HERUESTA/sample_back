@@ -50,11 +50,6 @@ jobs:
           MYSQL_PASSWORD: password
         ports:
           - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping -h localhost -u user -ppassword"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
 
       # redis:
       #   image: redis
@@ -91,6 +86,11 @@ jobs:
         run: bin/rails db:test:prepare
         env:
           RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: user
+          DB_PASSWORD: password
+          DB_NAME: sample_db_test
+          DB_PORT: 3306
 
       - name: Run tests
         env:
