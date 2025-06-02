@@ -91,9 +91,8 @@ jobs:
           DATABASE_URL: mysql2://user:password@127.0.0.1:3306/sample_db_test
 
       - name: Run tests
-        run: bin/rails test
         env:
           RAILS_ENV: test
-          DATABASE_URL: mysql2://127.0.0.1:3306
+          DATABASE_URL: mysql2://127.0.0.1:3306/sample_db_test
           # REDIS_URL: redis://localhost:6379/0
         run: bin/rails db:test:prepare test
