@@ -1,0 +1,17 @@
+- name: Setup database config for CI
+  run: |
+    cat > config/database.yml <<EOF
+    test:
+      adapter
+      encoding: utf8mb4
+      pool: 5
+      username: user
+      password: password
+      host: 127.0.0.1
+      database: sample_db_test
+    EOF
+
+- name: Setup database
+  run: bin/rails db:test:prepare
+  env:
+    RAILS_ENV: test
