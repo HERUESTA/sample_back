@@ -83,12 +83,15 @@ jobs:
           EOF
 
       - name: Setup database
-        run: bin/rails db:test:prepare
+        run: |
+          bin/rails db:create
+          bin/rails db:migrate
         env:
           RAILS_ENV: test
           DATABASE_URL: mysql2://user:password@127.0.0.1:3306/sample_db_test
 
       - name: Run tests
+        run: bin/rails test
         env:
           RAILS_ENV: test
           DATABASE_URL: mysql2://127.0.0.1:3306
